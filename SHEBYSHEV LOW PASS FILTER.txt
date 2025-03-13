@@ -1,0 +1,92 @@
+>> close all;
+>> clear all;
+>> wp = 0.5;
+>> ws = 0.7;
+>> rp = 1;
+>> rs = 50;
+>> [n,wn]=cheb1ord(wp,ws,rp,rs);
+>> [b,a] = cheby1(n,rp,wn,'low');
+>> [h,w] = freqz(b,a,128);
+>> subplot(2,1,1);
+>> plot(abs(h));
+>> xlabel('frequency');
+>> ylabel('amplitude');
+>> title(' low pass chebyshev filter response');
+
+
+
+
+>> close all;
+>> clear all;
+>> wp = 0.7;
+>> ws = 0.5;
+>> rp =1;
+>> rs = 30;
+>> [n,wn]= cheb1ord(wp,ws,rp,rs);
+>> [b,a] = cheby1(n,rp,wn,'high');
+>> [h,w] = freqz(b,a,128);
+>> subplot(2,2,2);
+>> plot(abs(h));
+>> xlabel('frequency');
+>> ylabel('amplitude');
+>> title('high pass chebyshev fitler response');
+
+
+
+>> wp = 0.7;
+>> ws =0.5;
+>> rp =1;
+>> rs = 30;
+>> [n,wn] = buttord(wp,ws,rp,rs);
+>> [b,a] = butter(n,wn,'high');
+>> [h,w] = freqz(b,a,128);
+>> subplot(2,1,1);
+>> plot(abs(h));
+>> xlabel('frequency');
+>> ylabel('amplitude');
+>> title('butter worth high pass filter response');
+
+
+
+>> wp = 0.5;
+>> ws =0.7;
+>> rp =1;
+>> rs = 50;
+>> [n,wn] = buttord(wp,ws,rp,rs);
+>> [b,a] = butter(n,wn,'low');
+>> [h,w] = freqz(b,a,128);
+>> subplot(2,1,1);
+>> plot(abs(h));
+>> xlabel('frequency');
+>> ylabel('amplitude');
+>> title('butter worth low pass filter response');
+
+
+
+>> close all;
+>> clear all;
+>> n =50;
+>> w =0.30;
+>> b = fir1(n,w,'low');
+ 
+>> [b,w] = freqz(b,1,128,8000);
+ 
+>> plot(w,abs(b));
+>> xlabel('frequency');
+>> ylabel('amplitude');
+>> title('fir low pass filter');
+
+
+>> close all;
+>> clear all;
+>> n = 50;
+>> w = 0.30;
+>> fs = 8000;
+>> b = fir1(n,w,'high');
+ 
+>> [b,w] = freqz(b,1,128,fs);
+>> plot(w,abs(b));
+ 
+>> xlabel('frequency');
+>> ylabel('amplitude');
+>> title('FIR HIGH PASS FILTER');
